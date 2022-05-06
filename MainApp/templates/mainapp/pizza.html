@@ -1,0 +1,50 @@
+{% extends "MainApp/base.html" %} 
+
+{% block content %} 
+
+<p>
+    Pizza: {{ pizza }} 
+</p>
+
+<ul>
+    {% for t in toppings %} 
+    <li>
+        <p> {{ t }} </p>
+    </li>
+    {% empty %} 
+    <li> There are no toppings for this pizza yet. </li>
+    {% endfor %} 
+</ul>
+
+
+{% if pizza.image %} 
+    <img src="{{pizza.image.url}}">
+{% endif %} 
+
+
+
+
+<p>
+    Comments:
+</p>
+
+<!--
+{% for c in comments %} 
+    <a href="{% url 'MainApp:comments' pizza_id %}">{{c}}</a>
+{% endfor %} 
+
+-->
+
+<a href="{% url 'MainApp:comments' pizza.id %}">Click to see comments</a> 
+
+<ul>
+    {% for c in comments %} 
+    <li>
+        <p> {{ c }} </p>
+    
+    {% endfor %} 
+    </li>
+</ul>
+
+
+{% endblock content %} 
