@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'MainApp',
+    'bootstrap4',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -121,4 +122,4 @@ USE_TZ = True
 STATIC_URL = '/statiic/'
 
 MEDIA_URL = 'MainApp/static/mainapp/media/'
-MEDIA_URL = os.path.join(BASE_DIR,'media')
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')

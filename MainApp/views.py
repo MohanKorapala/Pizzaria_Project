@@ -17,9 +17,9 @@ def pizzas(request):
 def pizza(request, pizza_id):
     pizza = Pizza.objects.get(id=pizza_id)
     toppings = pizza.topping_set.order_by('pizza_id') 
-    picture = Pizza.picture
+    picture = pizza.picture
 
-    comments= pizza.comment_set.all().order_by('-date_added')
+    #comments= pizza.comment_set.all().order_by('-date_added')
 
     context = {'pizza':pizza, 'toppings':toppings, 'picture':picture, 'comments':comments} 
 
@@ -28,7 +28,7 @@ def pizza(request, pizza_id):
 def new_comment(request, pizza_id):
   
     new_comment = Pizza.objects.get(id=pizza_id)
-    #new_comment = Comment.comment_set.all()
+    
 
     if request.method != 'POST':
         form = CommentForm()
@@ -44,23 +44,6 @@ def new_comment(request, pizza_id):
     context = {'form':form, 'comment':new_comment}
     return render(request, 'MainApp/new_comment.html', context)
 
-    pizza = Pizza.objects.get(id=pizza_id)
-    #new_comment = pizza.comment_set.all()
-
-    if request.method != 'POST':
-        form = CommentForm()
-    else:
-        form = CommentForm(data=request.POST)
-
-        if form.is_valid():
-            #new_comment = form.save(commit=False)
-            #new_comment.comment = new_comment
-            new_comment = form.save()
-
-            return redirect('MainApp:pizza', pizza_id=pizza_id)
-
-    context = {'form':form}
-    return render(request, 'MainApp/new_comment.html', context)
 
 def comments(request, pizza_id):
     if request.method == 'POST' and request.POST.get('btn1'):

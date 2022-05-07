@@ -1,25 +1,25 @@
-{% extends "MainApp/base.html" %} 
+{% extends "MainApp/base.html" %}
 
-{% block content %} 
+{% block content %}
 
 <p>
-    Pizza: {{ pizza }} 
+    Pizza: {{ pizza }}
 </p>
 
 <ul>
-    {% for t in toppings %} 
+    {% for t in toppings %}
     <li>
         <p> {{ t }} </p>
     </li>
-    {% empty %} 
+    {% empty %}
     <li> There are no toppings for this pizza yet. </li>
-    {% endfor %} 
+    {% endfor %}
 </ul>
 
 
-{% if pizza.image %} 
-    <img src="{{pizza.image.url}}">
-{% endif %} 
+{% if pizza.image %}
+<img src="{{ pizza.picture.url }}">
+{% endif %}
 
 
 
@@ -35,18 +35,18 @@
 
 -->
 
-<a href="{% url 'MainApp:comments' pizza.id %}">Click to see comments</a> 
+<a href="{% url 'MainApp:comments' pizza.id %}">Click to see comments</a>
 
 <ul>
-    {% for c in comments %} 
+    {% for c in comments %}
     <li>
         <p> {{ c }} </p>
-    
-    {% endfor %} 
+
+        {% endfor %}
     </li>
 </ul>
 <p>
     <img src="{{ pizza.picture.url }}">
 </p>
 
-{% endblock content %} 
+{% endblock content %}
