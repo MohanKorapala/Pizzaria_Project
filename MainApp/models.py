@@ -7,7 +7,7 @@ class Pizza(models.Model):
     picture = models.ImageField(upload_to='img',blank=True,null=True)
 
     def __str__(self):
-        return self.text 
+        return self.text
 
 class Topping(models.Model):
     pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
