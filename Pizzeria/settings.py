@@ -120,5 +120,5 @@ USE_TZ = True
 
 STATIC_URL = '/statiic/'
 
-MEDIA_URL = 'MainApp/static/mainapp/media'
+MEDIA_URL = 'MainApp/static/mainapp/media/'
 MEDIA_URL = os.path.join(BASE_DIR,'media')
