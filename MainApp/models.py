@@ -1,6 +1,6 @@
 from distutils.command.upload import upload
 from django.db import models
-from Pizzeria.settings import MEDIA_URL
+
 # Create your models here. TABLES   
 class Pizza(models.Model):
     text = models.CharField(max_length=200)
