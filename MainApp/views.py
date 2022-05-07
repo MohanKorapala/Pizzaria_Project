@@ -16,12 +16,15 @@ def pizzas(request):
 
 def pizza(request, pizza_id):
     pizza = Pizza.objects.get(id=pizza_id)
-    toppings = pizza.topping_set.all() 
+    toppings = pizza.topping_set.order_by('pizza_id') 
+    picture = Pizza.picture
 
-    context = {'pizza':pizza, 'toppings':toppings} 
+    comments= pizza.comment_set.all().order_by('-date_added')
 
-    return render(request, 'MainApp/pizza.html', context) #context is a dict object
-'''
+    context = {'pizza':pizza, 'toppings':toppings, 'picture':picture, 'comments':comments} 
+
+    return render(request, 'MainApp/pizza.html', context)
+
 def new_comment(request, pizza_id):
   
     new_comment = Pizza.objects.get(id=pizza_id)
@@ -58,7 +61,7 @@ def new_comment(request, pizza_id):
 
     context = {'form':form}
     return render(request, 'MainApp/new_comment.html', context)
-'''
+
 def comments(request, pizza_id):
     if request.method == 'POST' and request.POST.get('btn1'):
         comment = request.POST.get('comment') 
